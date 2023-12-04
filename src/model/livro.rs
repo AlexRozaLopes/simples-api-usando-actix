@@ -6,12 +6,14 @@ use serde::{Serialize, Deserialize};
 #[diesel(table_name = crate::schema::livros)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Livro {
+    pub id: i32,
     pub title: String,
     pub author: String,
+    pub published: bool,
 }
 
 impl Livro {
     pub fn new(title: String, author: String) -> Livro {
-        Livro { title, author }
+        Livro {id: 1, title, author, published:false}
     }
 }

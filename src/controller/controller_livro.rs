@@ -13,3 +13,8 @@ pub async fn post_livro(book_request: web::Json<Livro>) -> Result<impl Responder
     livro_service::create_livro(book_request.title.as_str(), book_request.author.as_str());
     Ok(web::Json(book_request))
 }
+
+#[get("/all")]
+pub async fn get_all_livros() -> Result<impl Responder> {
+    Ok(web::Json(livro_service::get_all_livros()))
+}
